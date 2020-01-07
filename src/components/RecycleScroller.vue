@@ -26,7 +26,7 @@
       <div
         v-for="view of pool"
         :key="view.nr.id"
-        :style="ready ? [direction === 'vertical' ? 'top' : 'left'] : null"
+        :style="ready ? `top: ${view.position}px;` : null"
         class="vue-recycle-scroller__item-view"
         :class="{ hover: hoverKey === view.nr.key }"
         @mouseenter="hoverKey = view.nr.key"
@@ -563,6 +563,14 @@ export default {
 </script>
 
 <style>
+.vue-recycle-scroller__item-view {
+  z-index: 1!important;
+}
+
+.vue-recycle-scroller__item-view.hover {
+  z-index: 3!important;
+}
+
 .vue-recycle-scroller {
   position: relative;
 }
